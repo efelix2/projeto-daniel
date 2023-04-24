@@ -1,0 +1,32 @@
+<?php
+defined('BASEPATH') or exit('No direct script access allowed');
+
+class Home extends CI_Controller
+{
+    //Caminho via navegador
+    // http://localhost/git/index.php/int_anc/anc
+    public function index()
+    {
+        $this->load->model('int_ANC/M_retorno');
+        ////////////////////////////////////////////////////////////////////////////////////////
+        ////// RETORNAR TODOS CENTRO DE CUSTO, CRIADO POR DANIEL, 31/03/2022  /////
+        ////////////////////////////////////////////////////////////////////////////////////////
+        $retorno['depto'] = $this->M_retorno->ret_depto();
+        ////////////////////////////////////////////////////////////////////////////////////////
+        ////// RETORNAR TODOS OS NÚMEROS DOS ALMOXARIFADOS, CRIADO POR DANIEL, 23/03/2022  /////
+        ////////////////////////////////////////////////////////////////////////////////////////
+        $retorno['secao'] = $this->M_retorno->BuscaNomeSecao();
+        ////////////////////////////////////////////////////////////////////////////////////////
+        // RETORNAR LISTA DOS ALMOXARIFADOS QUE JÁ FIZERAM RR, CRIADO POR DANIEL, 23/03/2022 ///
+        ////////////////////////////////////////////////////////////////////////////////////////
+        // $retorno['almoxOrig'] = $this->M_retorno->BuscaAlmoxOrig();
+        ////////////////////////////////////////////////////////////////////////////////////////
+        /////// RETORNAR TODOS OS TIPOS DE DOCUMENTOS, CRIADO POR DANIEL, 24/02/2022     ///////
+        ////////////////////////////////////////////////////////////////////////////////////////
+        // $retorno['tipodoc'] = $this->M_retorno->tipodoc();
+        $this->load->view('int_ANC/v_registroANC', $retorno);
+        // $this->load->view('int_ANC/v_registroANC');
+        // $this->load->view('includes/bs4/footer');
+    }
+
+}
